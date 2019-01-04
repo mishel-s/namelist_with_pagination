@@ -1,0 +1,26 @@
+@media(min-width: 0px) {
+
+  .userCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    box-shadow: 0 0 5px 2px grey;
+    border-radius: 3px;
+    padding: .25rem;
+    margin: .5rem;
+    min-width: 0;
+  }
+
+  .userCard span {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .desc {
+    padding-top: .5rem;
+    text-align: justify;
+    font-size: 13px;
+  }
+
+}
