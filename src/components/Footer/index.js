@@ -5,8 +5,8 @@ import './styles.css';
 export const Footer = () => {
   return (
     <footer>
-      <div className="">Created by Mishel</div> 
       <div className="footer_contacts">
+        <span>Created by Mishel</span>
         <a target="_blank"  
            rel="noopener noreferrer" 
            href="mailto:msavastru@gmail.com">

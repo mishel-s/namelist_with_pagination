@@ -1,44 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {UserCard} from '../../components/UserCard';
+import MDSpinner from "react-md-spinner";
 
 import './styles.css';
 
-class UsersList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataUsers: []
-    }
-  }
-
-  getArrUsers = (dataUsers) => {
-    let arrayUsers = [];
-    for (let i = 0; i < dataUsers.length; i++) {
-      arrayUsers.push(this.props.dataUsers[i]);
-    }
-    this.setState({
-      dataUsers: arrayUsers
-    })
-    return arrayUsers
-  }
-
-  render() {
-    return (
-      <div className="usersList">
-        { this.props.dataUsers.length
-          ? (this.props.dataUsers.slice(0, this.props.usersPerPage)).map((user)=> (
-              <div className="userCard" key={user.id} id={user.id}>
-                <UserCard 
-                  data={user}
-                />
-              </div>
-            ))
-          : <span>нет пользователей</span>
-        }
-      </div>
-    )
-  }
-} 
-
-export default UsersList;
+export const UsersList = ({dataUsers, usersPerPage, curentPage}) => {
+  let showUsersFrom = usersPerPage*(curentPage - 1);
+  let showUsersTo = curentPage*usersPerPage;
+  return (
+    <div className="usersList">
+      { dataUsers.length
+        ? (dataUsers.slice(showUsersFrom, showUsersTo)).map((user)=> (
+            <div className="userCard" key={user.id} id={user.id}>
+              <UserCard 
+                data={user}
+              />
+            </div>
+          ))
+        : !dataUsers.length
+        ? <div><MDSpinner size={70} borderSize={3} /></div>
+        : <span>нет пользователей</span>
+      }
+    </div>
+  )
+}
